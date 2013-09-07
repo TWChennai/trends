@@ -14,7 +14,7 @@ module TWUtilization
 
     def self.save(row)
       row_to_save = row.to_hash.each_with_object({}) { |(key, value), obj| obj[key.gsub(" ", "")] = value }
-      row_to_save["WeekEndingTimestamp"] = DateTime.strptime(row_to_save["WeekEndingDt"], "%d/%m/%y").to_time.to_i * 1000
+      row_to_save["WeekEndingTimestamp"] = DateTime.strptime(row_to_save["WeekEndingDt"], "%d/%m/%y").to_time.utc.strftime("%FT%T.000Z")
       row_to_save["type"] = "utilization"
 
       rows = []
@@ -32,6 +32,7 @@ module TWUtilization
           :properties => {
             :Name => { :type => 'string', :index => :not_analyzed },
             :WeekEndingDt => { :type => 'string', :index => :not_analyzed },
+            :WeekEndingTimestamp => { :type => 'date', :format => 'date_time' },
             :Role => { :type => 'string', :index => :not_analyzed },
             :Grade => { :type => 'string', :index => :not_analyzed }
           }
