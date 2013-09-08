@@ -101,5 +101,10 @@ module TWUtilization
       Importer.import_from params[:file][:tempfile]
       redirect '/'
     end
+
+    get '/delete' do
+      raise "Need query params" unless params.present?
+      Tire.delete('kibana-int'){|q| q.string params.map{|k,v| "#{k}:#{v}"}.join(" AND" ) }.to_s
+    end
   end
 end

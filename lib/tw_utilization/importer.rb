@@ -8,6 +8,7 @@ module TWUtilization
       csv = CSV.read(file, :headers => true, :encoding => 'windows-1251:utf-8')
       create_index
       csv.each do |row|
+        next if row["Name"].blank? # Reject all blank rows
         save(row)
       end
     end
@@ -19,8 +20,12 @@ module TWUtilization
     end
 
     def self.explode(row)
-      row_to_save = row.to_hash.each_with_object({}) { |(key, value), obj| obj[key.gsub(" ", "")] = value }
-      row_to_save["WeekEndingTimestamp"] = DateTime.strptime(row_to_save["WeekEndingDt"], "%d/%m/%y").to_time.utc.strftime("%FT%T.000Z")
+      row = row.to_hash
+      row.delete(nil)
+      row_to_save = row.each_with_object({}) { |(key, value), obj| obj[key.gsub(" ", "")] = value }
+      date = DateTime.strptime(row_to_save["WeekEndingDt"], "%d/%m/%y")
+      row_to_save["WeekEndingTimestamp"] = date.to_time.utc.strftime("%FT%T.000Z")
+      row_to_save["WeekEndingDt"] = date.strftime "%Y-%m-%d"
       row_to_save["type"] = "utilization"
 
       rows = []
