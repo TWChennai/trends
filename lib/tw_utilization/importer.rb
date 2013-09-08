@@ -13,6 +13,12 @@ module TWUtilization
     end
 
     def self.save(row)
+      index.import explode(row)
+    rescue => e
+      p "Failed for #{row} with #{e.inspect}"
+    end
+
+    def self.explode(row)
       row_to_save = row.to_hash.each_with_object({}) { |(key, value), obj| obj[key.gsub(" ", "")] = value }
       row_to_save["WeekEndingTimestamp"] = DateTime.strptime(row_to_save["WeekEndingDt"], "%d/%m/%y").to_time.utc.strftime("%FT%T.000Z")
       row_to_save["type"] = "utilization"
@@ -21,9 +27,7 @@ module TWUtilization
       rows += row_to_save["Billable"].to_i.times.map { row_to_save.merge :billable_type => "Billable" }
       rows += row_to_save["TWNonbillable"].to_i.times.map { row_to_save.merge :billable_type => "ThoughtworksNonBillable" }
       rows += row_to_save["ClientNonbillable"].to_i.times.map { row_to_save.merge :billable_type => "ClientNonBillable" }
-      index.import rows
-    rescue => e
-      p "Failed for #{row} with #{e.inspect}"
+      rows
     end
 
     def self.create_index

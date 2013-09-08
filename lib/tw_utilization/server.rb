@@ -92,5 +92,14 @@ module TWUtilization
 
       File.read(File.join(PUBLIC, "index.html"))
     end
+
+    get '/upload' do
+      haml :upload
+    end
+
+    post '/upload' do
+      Importer.import_from params[:file][:tempfile]
+      redirect '/'
+    end
   end
 end
