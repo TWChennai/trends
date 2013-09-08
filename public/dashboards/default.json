@@ -39,8 +39,8 @@
       ],
       "list": {
         "0": {
-          "from": "2012-09-08T13:28:49.443Z",
-          "to": "2013-09-08T13:28:49.443Z",
+          "from": "2013-03-12T13:51:20.546Z",
+          "to": "2013-09-08T13:51:20.546Z",
           "field": "WeekEndingTimestamp",
           "type": "time",
           "mandate": "must",
@@ -136,7 +136,7 @@
       "height": "250px",
       "editable": true,
       "collapse": false,
-      "collapsable": true,
+      "collapsable": false,
       "panels": [
         {
           "error": false,
@@ -155,7 +155,7 @@
           },
           "field": "billable_type",
           "exclude": [],
-          "missing": true,
+          "missing": false,
           "other": false,
           "size": 100,
           "order": "count",
@@ -167,7 +167,7 @@
           "labels": true,
           "arrangement": "horizontal",
           "chart": "pie",
-          "counter_pos": "none",
+          "counter_pos": "below",
           "title": "Billable / Non Billable",
           "spyable": true
         },
@@ -221,7 +221,7 @@
           "panels": [
             {
               "loading": false,
-              "error": false,
+              "error": "",
               "sizeable": false,
               "span": 12,
               "height": "150px",
@@ -241,7 +241,7 @@
                 "1y",
                 "2y"
               ],
-              "timespan": "1y",
+              "timespan": "180d",
               "status": "Stable",
               "timeformat": "",
               "refresh": {
@@ -255,28 +255,7 @@
               "loading": false,
               "sizeable": false,
               "span": 12,
-              "height": "150px",
-              "editable": true,
-              "type": "trends",
-              "title": "Trend",
-              "ago": "5w",
-              "queries": {
-                "mode": "all",
-                "ids": [
-                  0,
-                  1
-                ]
-              },
-              "style": {
-                "font-size": "14pt"
-              },
-              "arrangement": "vertical"
-            },
-            {
-              "loading": false,
-              "sizeable": false,
-              "span": 12,
-              "height": "150px",
+              "height": "250px",
               "editable": true,
               "type": "histogram",
               "title": "Across Period",
@@ -293,7 +272,7 @@
               "interval": "1w",
               "tooltip": {
                 "query_as_alias": true,
-                "value_type": "cumulative"
+                "value_type": "individual"
               },
               "queries": {
                 "mode": "all",
@@ -307,10 +286,31 @@
               "resolution": 100,
               "spyable": true,
               "bars": false,
-              "stack": true,
+              "stack": false,
               "points": false,
               "legend": true,
               "percentage": false
+            },
+            {
+              "loading": false,
+              "sizeable": false,
+              "span": 12,
+              "height": "100px",
+              "editable": true,
+              "type": "trends",
+              "title": "Trend",
+              "ago": "2w",
+              "queries": {
+                "mode": "all",
+                "ids": [
+                  0,
+                  1
+                ]
+              },
+              "style": {
+                "font-size": "14pt"
+              },
+              "arrangement": "vertical"
             }
           ],
           "title": "Column"
