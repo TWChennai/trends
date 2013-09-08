@@ -82,7 +82,7 @@ module TWUtilization
         session = request.session
 
         process_cas_login(request, session)
-        "http://localhost:9200/#{path.gsub('/es', '')}" if logged_in?(request, request.session)
+        "#{ENV['ELASTICSEARCH_URL']}/#{path.gsub('/es', '')}" if logged_in?(request, request.session)
       end
     end
 
