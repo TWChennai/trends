@@ -39,8 +39,8 @@
       ],
       "list": {
         "0": {
-          "from": "2013-05-10T14:42:16.474Z",
-          "to": "2013-09-07T14:42:16.474Z",
+          "from": "2013-03-12T13:10:36.439Z",
+          "to": "2013-09-08T13:10:36.439Z",
           "field": "WeekEndingTimestamp",
           "type": "time",
           "mandate": "must",
@@ -132,6 +132,81 @@
       ]
     },
     {
+      "title": "Graph",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "error": false,
+          "span": 6,
+          "editable": true,
+          "group": [
+            "default"
+          ],
+          "type": "terms",
+          "queries": {
+            "mode": "all",
+            "ids": [
+              0,
+              1
+            ]
+          },
+          "field": "billable_type",
+          "exclude": [],
+          "missing": true,
+          "other": false,
+          "size": 100,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": true,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "pie",
+          "counter_pos": "none",
+          "title": "Billable / Non Billable",
+          "spyable": true
+        },
+        {
+          "error": false,
+          "span": 6,
+          "editable": true,
+          "group": [
+            "default"
+          ],
+          "type": "terms",
+          "queries": {
+            "mode": "all",
+            "ids": [
+              0,
+              1
+            ]
+          },
+          "field": "billable_type",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "table",
+          "counter_pos": "above",
+          "spyable": true,
+          "title": "Table"
+        }
+      ]
+    },
+    {
       "title": "Time",
       "height": "250px",
       "editable": true,
@@ -156,7 +231,7 @@
             "180d",
             "1y"
           ],
-          "timespan": "120d",
+          "timespan": "180d",
           "timefield": "WeekEndingTimestamp",
           "timeformat": "",
           "refresh": {
@@ -183,8 +258,8 @@
           "exclude": [],
           "missing": false,
           "other": false,
-          "size": 10,
-          "order": "count",
+          "size": 20,
+          "order": "term",
           "style": {
             "font-size": "10pt"
           },
@@ -344,81 +419,6 @@
           "counter_pos": "above",
           "spyable": true,
           "title": "Office Table"
-        }
-      ]
-    },
-    {
-      "title": "Graph",
-      "height": "250px",
-      "editable": true,
-      "collapse": false,
-      "collapsable": true,
-      "panels": [
-        {
-          "error": false,
-          "span": 6,
-          "editable": true,
-          "group": [
-            "default"
-          ],
-          "type": "terms",
-          "queries": {
-            "mode": "all",
-            "ids": [
-              0,
-              1
-            ]
-          },
-          "field": "billable_type",
-          "exclude": [],
-          "missing": true,
-          "other": false,
-          "size": 100,
-          "order": "count",
-          "style": {
-            "font-size": "10pt"
-          },
-          "donut": true,
-          "tilt": false,
-          "labels": true,
-          "arrangement": "horizontal",
-          "chart": "pie",
-          "counter_pos": "none",
-          "title": "Billable / Non Billable",
-          "spyable": true
-        },
-        {
-          "error": false,
-          "span": 6,
-          "editable": true,
-          "group": [
-            "default"
-          ],
-          "type": "terms",
-          "queries": {
-            "mode": "all",
-            "ids": [
-              0,
-              1
-            ]
-          },
-          "field": "billable_type",
-          "exclude": [],
-          "missing": false,
-          "other": false,
-          "size": 10,
-          "order": "count",
-          "style": {
-            "font-size": "10pt"
-          },
-          "donut": false,
-          "tilt": false,
-          "labels": true,
-          "arrangement": "horizontal",
-          "chart": "table",
-          "counter_pos": "above",
-          "spyable": true,
-          "title": "Table"
         }
       ]
     },
