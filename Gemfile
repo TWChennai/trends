@@ -1,7 +1,5 @@
 source 'http://rubygems.org'
 
-ruby '2.0.0'
-
 gem 'tire'
 gem 'sinatra'
 gem 'rubycas-client'
