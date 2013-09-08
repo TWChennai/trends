@@ -39,8 +39,8 @@
       ],
       "list": {
         "0": {
-          "from": "2013-03-12T13:10:36.439Z",
-          "to": "2013-09-08T13:10:36.439Z",
+          "from": "2012-09-08T13:28:49.443Z",
+          "to": "2013-09-08T13:28:49.443Z",
           "field": "WeekEndingTimestamp",
           "type": "time",
           "mandate": "must",
@@ -214,33 +214,106 @@
       "collapsable": true,
       "panels": [
         {
-          "error": "",
+          "error": false,
           "span": 6,
           "editable": true,
-          "type": "timepicker",
-          "status": "Stable",
-          "mode": "relative",
-          "time_options": [
-            "7d",
-            "14d",
-            "21d",
-            "30d",
-            "60d",
-            "120d",
-            "150d",
-            "180d",
-            "1y"
+          "type": "column",
+          "panels": [
+            {
+              "loading": false,
+              "error": false,
+              "sizeable": false,
+              "span": 12,
+              "height": "150px",
+              "editable": true,
+              "type": "timepicker",
+              "title": "Timeline",
+              "mode": "relative",
+              "timefield": "WeekEndingTimestamp",
+              "time_options": [
+                "1w",
+                "2w",
+                "3w",
+                "4w",
+                "60d",
+                "120d",
+                "180d",
+                "1y",
+                "2y"
+              ],
+              "timespan": "1y",
+              "status": "Stable",
+              "timeformat": "",
+              "refresh": {
+                "enable": false,
+                "interval": 30,
+                "min": 3
+              },
+              "filter_id": 0
+            },
+            {
+              "loading": false,
+              "sizeable": false,
+              "span": 12,
+              "height": "150px",
+              "editable": true,
+              "type": "trends",
+              "title": "Trend",
+              "ago": "5w",
+              "queries": {
+                "mode": "all",
+                "ids": [
+                  0,
+                  1
+                ]
+              },
+              "style": {
+                "font-size": "14pt"
+              },
+              "arrangement": "vertical"
+            },
+            {
+              "loading": false,
+              "sizeable": false,
+              "span": 12,
+              "height": "150px",
+              "editable": true,
+              "type": "histogram",
+              "title": "Across Period",
+              "mode": "count",
+              "time_field": "WeekEndingTimestamp",
+              "lines": true,
+              "x-axis": true,
+              "y-axis": true,
+              "fill": 0,
+              "linewidth": 2,
+              "interactive": true,
+              "timezone": "browser",
+              "zoomlinks": true,
+              "interval": "1w",
+              "tooltip": {
+                "query_as_alias": true,
+                "value_type": "cumulative"
+              },
+              "queries": {
+                "mode": "all",
+                "ids": [
+                  0,
+                  1
+                ]
+              },
+              "value_field": null,
+              "auto_int": false,
+              "resolution": 100,
+              "spyable": true,
+              "bars": false,
+              "stack": true,
+              "points": false,
+              "legend": true,
+              "percentage": false
+            }
           ],
-          "timespan": "180d",
-          "timefield": "WeekEndingTimestamp",
-          "timeformat": "",
-          "refresh": {
-            "enable": false,
-            "interval": 30,
-            "min": 3
-          },
-          "title": "Timeline",
-          "filter_id": 0
+          "title": "Column"
         },
         {
           "error": false,
@@ -271,85 +344,6 @@
           "counter_pos": "above",
           "spyable": true,
           "title": "Week Ending"
-        }
-      ]
-    },
-    {
-      "title": "Trend",
-      "height": "150px",
-      "editable": true,
-      "collapse": false,
-      "collapsable": true,
-      "panels": [
-        {
-          "span": 6,
-          "editable": true,
-          "type": "histogram",
-          "mode": "count",
-          "time_field": "WeekEndingTimestamp",
-          "queries": {
-            "mode": "all",
-            "ids": [
-              0,
-              1
-            ]
-          },
-          "value_field": "5000",
-          "auto_int": false,
-          "resolution": 100,
-          "interval": "1w",
-          "fill": 0,
-          "linewidth": 2,
-          "timezone": "browser",
-          "spyable": true,
-          "zoomlinks": true,
-          "bars": false,
-          "stack": true,
-          "points": false,
-          "lines": true,
-          "legend": true,
-          "x-axis": true,
-          "y-axis": true,
-          "percentage": false,
-          "interactive": true,
-          "tooltip": {
-            "value_type": "cumulative",
-            "query_as_alias": true
-          },
-          "title": "Trend"
-        },
-        {
-          "span": 3,
-          "editable": true,
-          "type": "trends",
-          "queries": {
-            "mode": "all",
-            "ids": [
-              0,
-              1
-            ]
-          },
-          "style": {
-            "font-size": "14pt"
-          },
-          "ago": "5w",
-          "arrangement": "vertical",
-          "title": "Trend"
-        },
-        {
-          "error": false,
-          "span": 2,
-          "editable": true,
-          "type": "query",
-          "label": "Search",
-          "query": "*",
-          "pinned": true,
-          "history": [
-            "* AND NOT billable_type:\"Billable\"",
-            "billable_type:\"Billable\"",
-            "*"
-          ],
-          "remember": 10
         }
       ]
     },
@@ -419,6 +413,18 @@
           "counter_pos": "above",
           "spyable": true,
           "title": "Office Table"
+        },
+        {
+          "error": false,
+          "span": 3,
+          "editable": true,
+          "type": "query",
+          "label": "Search",
+          "query": "*",
+          "pinned": true,
+          "history": [],
+          "remember": 10,
+          "title": "Query"
         }
       ]
     },
