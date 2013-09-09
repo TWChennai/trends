@@ -39,8 +39,8 @@
       ],
       "list": {
         "0": {
-          "from": "2013-03-12T13:51:20.546Z",
-          "to": "2013-09-08T13:51:20.546Z",
+          "from": "2013-03-13T12:35:35.474Z",
+          "to": "2013-09-09T12:35:35.474Z",
           "field": "WeekEndingTimestamp",
           "type": "time",
           "mandate": "must",
@@ -255,46 +255,6 @@
               "loading": false,
               "sizeable": false,
               "span": 12,
-              "height": "250px",
-              "editable": true,
-              "type": "histogram",
-              "title": "Across Period",
-              "mode": "count",
-              "time_field": "WeekEndingTimestamp",
-              "lines": true,
-              "x-axis": true,
-              "y-axis": true,
-              "fill": 0,
-              "linewidth": 2,
-              "interactive": true,
-              "timezone": "browser",
-              "zoomlinks": true,
-              "interval": "1w",
-              "tooltip": {
-                "query_as_alias": true,
-                "value_type": "individual"
-              },
-              "queries": {
-                "mode": "all",
-                "ids": [
-                  0,
-                  1
-                ]
-              },
-              "value_field": null,
-              "auto_int": false,
-              "resolution": 100,
-              "spyable": true,
-              "bars": false,
-              "stack": false,
-              "points": false,
-              "legend": true,
-              "percentage": false
-            },
-            {
-              "loading": false,
-              "sizeable": false,
-              "span": 12,
               "height": "100px",
               "editable": true,
               "type": "trends",
@@ -311,6 +271,46 @@
                 "font-size": "14pt"
               },
               "arrangement": "vertical"
+            },
+            {
+              "loading": false,
+              "sizeable": false,
+              "span": 12,
+              "height": "250px",
+              "editable": true,
+              "type": "histogram",
+              "title": "Across Period",
+              "mode": "count",
+              "time_field": "WeekEndingTimestamp",
+              "lines": true,
+              "stack": true,
+              "percentage": true,
+              "legend": true,
+              "x-axis": true,
+              "y-axis": true,
+              "fill": 1,
+              "linewidth": 1,
+              "timezone": "browser",
+              "zoomlinks": true,
+              "interval": "1w",
+              "tooltip": {
+                "value_type": "individual",
+                "query_as_alias": true
+              },
+              "queries": {
+                "mode": "all",
+                "ids": [
+                  0,
+                  1
+                ]
+              },
+              "value_field": null,
+              "auto_int": false,
+              "resolution": 100,
+              "spyable": true,
+              "bars": false,
+              "points": false,
+              "interactive": true
             }
           ],
           "title": "Column"
