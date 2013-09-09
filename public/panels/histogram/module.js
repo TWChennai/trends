@@ -330,6 +330,7 @@ angular.module('kibana.histogram', [])
         var scripts = $LAB.script("common/lib/panels/jquery.flot.js").wait()
           .script("common/lib/panels/jquery.flot.time.js")
           .script("common/lib/panels/jquery.flot.stack.js")
+          .script("common/lib/panels/jquery.flot.stackpercent.js")
           .script("common/lib/panels/jquery.flot.selection.js")
           .script("common/lib/panels/timezone.js");
 
@@ -342,7 +343,7 @@ angular.module('kibana.histogram', [])
             var options = {
               legend: { show: false },
               series: {
-                //stackpercent: scope.panel.stack ? scope.panel.percentage : false,
+                stackpercent: scope.panel.stack ? scope.panel.percentage : false,
                 stack: scope.panel.percentage ? null : stack,
                 lines:  {
                   show: scope.panel.lines,
