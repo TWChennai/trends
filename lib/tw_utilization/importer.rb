@@ -19,6 +19,7 @@ module TWUtilization
           :utilization => {
             :properties => {
               :Name => { :type => 'string', :index => :not_analyzed },
+              :billable_type => { :type => 'string', :index => :not_analyzed },
               :WeekEndingDt => { :type => 'string', :index => :not_analyzed },
               :WeekEndingTimestamp => { :type => 'date', :format => 'date_time' },
               :Role => { :type => 'string', :index => :not_analyzed },
@@ -50,8 +51,8 @@ module TWUtilization
 
         rows = []
         rows += row_to_save["Billable"].to_i.times.map { row_to_save.merge :billable_type => "Billable" }
-        rows += row_to_save["TWNonbillable"].to_i.times.map { row_to_save.merge :billable_type => "ThoughtworksNonBillable" }
-        rows += row_to_save["ClientNonbillable"].to_i.times.map { row_to_save.merge :billable_type => "ClientNonBillable" }
+        rows += row_to_save["TWNonbillable"].to_i.times.map { row_to_save.merge :billable_type => "Thoughtworks NonBillable" }
+        rows += row_to_save["ClientNonbillable"].to_i.times.map { row_to_save.merge :billable_type => "Client NonBillable" }
         rows
       end
 
