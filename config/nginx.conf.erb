@@ -33,6 +33,12 @@ http {
     server_name _;
     keepalive_timeout 5;
 
+    location ~* \.(?:ico|css|js|gif|jpeg|jpg|png)$ {
+      root   /app/public;
+      expires 1h;
+      break;
+    }
+
     location /es {
       rewrite ^(/es)(.*)$ /$2 break;
       proxy_pass <%= ENV["ELASTICSEARCH_URL"] %>;
