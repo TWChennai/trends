@@ -1,0 +1,677 @@
+{
+  "title": "TW Utilization",
+  "services": {
+    "query": {
+      "idQueue": [],
+      "list": {
+        "0": {
+          "query": "billable_type:\"Billable\"",
+          "alias": "Billable",
+          "color": "#7EB26D",
+          "id": 0,
+          "pin": true,
+          "type": "lucene"
+        },
+        "1": {
+          "id": 1,
+          "color": "#EAB839",
+          "query": "* AND billable_type:\"Thoughtworks NonBillable\"",
+          "alias": "Thoughtworks NonBiillable",
+          "pin": true,
+          "type": "lucene"
+        },
+        "2": {
+          "id": 2,
+          "color": "#6ED0E0",
+          "query": "* AND billable_type:\"Client NonBillable\"",
+          "alias": "Client NonBillable",
+          "pin": true,
+          "type": "lucene"
+        },
+        "3": {
+          "id": 3,
+          "color": "#EF843C",
+          "query": "Role:\"Developer\"",
+          "alias": "Developers only",
+          "pin": false,
+          "type": "lucene"
+        },
+        "4": {
+          "id": 4,
+          "color": "#E24D42",
+          "query": "Role:\"Quality Assurance\"",
+          "alias": "QAs only",
+          "pin": false,
+          "type": "lucene"
+        },
+        "5": {
+          "id": 5,
+          "color": "#1F78C1",
+          "query": "Role:\"Business Analyst\"",
+          "alias": "BAs only",
+          "pin": false,
+          "type": "lucene"
+        },
+        "6": {
+          "id": 6,
+          "color": "#BA43A9",
+          "query": "Role:\"Project Manager\"",
+          "alias": "",
+          "pin": false,
+          "type": "lucene"
+        }
+      },
+      "ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "filter": {
+      "idQueue": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "list": {
+        "0": {
+          "from": "2013-03-19T06:57:51.192Z",
+          "to": "2013-09-15T06:57:51.193Z",
+          "field": "WeekEndingTimestamp",
+          "type": "time",
+          "mandate": "must",
+          "active": true,
+          "alias": "",
+          "id": 0
+        }
+      },
+      "ids": [
+        0
+      ]
+    }
+  },
+  "rows": [
+    {
+      "title": "Filters",
+      "height": "150px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "error": false,
+          "span": 4,
+          "editable": true,
+          "type": "column",
+          "panels": [
+            {
+              "loading": false,
+              "error": "",
+              "sizeable": false,
+              "span": 12,
+              "height": "10px",
+              "editable": true,
+              "type": "timepicker",
+              "mode": "relative",
+              "timefield": "WeekEndingTimestamp",
+              "time_options": [
+                "1w",
+                "2w",
+                "3w",
+                "4w",
+                "60d",
+                "120d",
+                "150d",
+                "180d",
+                "1y"
+              ],
+              "timespan": "180d",
+              "status": "Stable",
+              "timeformat": "",
+              "refresh": {
+                "enable": false,
+                "interval": 30,
+                "min": 3
+              },
+              "filter_id": 0
+            }
+          ],
+          "title": "Filters"
+        },
+        {
+          "error": false,
+          "span": 8,
+          "editable": true,
+          "type": "filtering",
+          "title": "Filters"
+        }
+      ]
+    },
+    {
+      "title": "Utilization",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "error": false,
+          "span": 4,
+          "editable": true,
+          "type": "terms",
+          "queries": {
+            "mode": "pinned",
+            "ids": [
+              0,
+              1,
+              2
+            ]
+          },
+          "field": "billable_type",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": true,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "pie",
+          "counter_pos": "none",
+          "spyable": true,
+          "title": "Overall Utilization"
+        },
+        {
+          "span": 6,
+          "editable": true,
+          "type": "histogram",
+          "mode": "count",
+          "time_field": "WeekEndingTimestamp",
+          "queries": {
+            "mode": "pinned",
+            "ids": [
+              0,
+              1,
+              2
+            ]
+          },
+          "value_field": null,
+          "auto_int": false,
+          "resolution": 100,
+          "interval": "1w",
+          "fill": 1,
+          "linewidth": 1,
+          "timezone": "browser",
+          "spyable": false,
+          "zoomlinks": true,
+          "bars": false,
+          "stack": true,
+          "points": false,
+          "lines": true,
+          "legend": true,
+          "x-axis": true,
+          "y-axis": true,
+          "percentage": true,
+          "interactive": true,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": false
+          },
+          "title": "Trend"
+        }
+      ]
+    },
+    {
+      "title": "Utilization breakup",
+      "height": "200px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": false,
+      "panels": [
+        {
+          "error": false,
+          "span": 3,
+          "editable": true,
+          "type": "terms",
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              3
+            ]
+          },
+          "field": "billable_type",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": true,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "pie",
+          "counter_pos": "none",
+          "spyable": true,
+          "title": "Developer Utilization"
+        },
+        {
+          "error": false,
+          "span": 3,
+          "editable": true,
+          "type": "terms",
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              4
+            ]
+          },
+          "field": "billable_type",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": true,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "pie",
+          "counter_pos": "none",
+          "spyable": false,
+          "title": "QAs Utiliation"
+        },
+        {
+          "error": false,
+          "span": 3,
+          "editable": true,
+          "type": "terms",
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              5
+            ]
+          },
+          "field": "billable_type",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": true,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "pie",
+          "counter_pos": "none",
+          "spyable": false,
+          "title": "BAs Utilization"
+        },
+        {
+          "error": false,
+          "span": 3,
+          "editable": true,
+          "type": "terms",
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              6
+            ]
+          },
+          "field": "billable_type",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": true,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "pie",
+          "counter_pos": "none",
+          "spyable": true,
+          "title": "PMs Utilization"
+        }
+      ]
+    },
+    {
+      "title": "Clients",
+      "height": "600px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "error": false,
+          "span": 6,
+          "editable": true,
+          "type": "terms",
+          "queries": {
+            "mode": "pinned",
+            "ids": [
+              0,
+              1,
+              2
+            ]
+          },
+          "field": "Project",
+          "exclude": [],
+          "missing": true,
+          "other": true,
+          "size": 100,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": true,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "pie",
+          "counter_pos": "none",
+          "spyable": true,
+          "title": "Project"
+        },
+        {
+          "error": false,
+          "span": 6,
+          "editable": true,
+          "type": "terms",
+          "queries": {
+            "mode": "pinned",
+            "ids": [
+              0,
+              1,
+              2
+            ]
+          },
+          "field": "Subproj",
+          "exclude": [],
+          "missing": true,
+          "other": true,
+          "size": 20,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": true,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "pie",
+          "counter_pos": "none",
+          "spyable": true,
+          "title": "Sub Project"
+        }
+      ]
+    },
+    {
+      "title": "Time",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "error": false,
+          "span": 6,
+          "editable": true,
+          "type": "terms",
+          "queries": {
+            "mode": "all",
+            "ids": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          },
+          "field": "WeekEndingDt",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 20,
+          "order": "reverse_term",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "table",
+          "counter_pos": "above",
+          "spyable": true,
+          "title": "Week Ending"
+        },
+        {
+          "error": false,
+          "span": 6,
+          "editable": true,
+          "type": "column",
+          "panels": [
+            {
+              "loading": false,
+              "error": false,
+              "sizeable": false,
+              "span": 12,
+              "height": "250px",
+              "editable": true,
+              "type": "terms",
+              "title": "Office",
+              "field": "WorkinOfficeasofEndDt",
+              "size": 10,
+              "chart": "pie",
+              "counter_pos": "below",
+              "donut": true,
+              "labels": true,
+              "queries": {
+                "mode": "all",
+                "ids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ]
+              },
+              "exclude": [],
+              "missing": true,
+              "other": true,
+              "order": "count",
+              "style": {
+                "font-size": "10pt"
+              },
+              "tilt": false,
+              "arrangement": "horizontal",
+              "spyable": true
+            },
+            {
+              "type": "query",
+              "height": "250px",
+              "label": "Search",
+              "query": "*",
+              "pinned": true,
+              "history": [],
+              "remember": 10
+            }
+          ],
+          "title": "Column"
+        }
+      ]
+    },
+    {
+      "title": "Grade and Role",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "error": false,
+          "span": 6,
+          "editable": true,
+          "type": "terms",
+          "queries": {
+            "mode": "pinned",
+            "ids": [
+              0,
+              1,
+              2
+            ]
+          },
+          "field": "Role",
+          "exclude": [],
+          "missing": false,
+          "other": true,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": true,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "table",
+          "counter_pos": "above",
+          "spyable": true,
+          "title": "Role"
+        },
+        {
+          "error": false,
+          "span": 6,
+          "editable": true,
+          "type": "terms",
+          "queries": {
+            "mode": "all",
+            "ids": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          },
+          "field": "Grade",
+          "exclude": [],
+          "missing": true,
+          "other": false,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": true,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "table",
+          "counter_pos": "above",
+          "spyable": true,
+          "title": "Grade"
+        }
+      ]
+    },
+    {
+      "title": "People",
+      "height": "550px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "terms",
+          "queries": {
+            "mode": "all",
+            "ids": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          },
+          "field": "Name",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 500,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "table",
+          "counter_pos": "above",
+          "spyable": true,
+          "title": "People"
+        }
+      ]
+    }
+  ],
+  "editable": true,
+  "index": {
+    "interval": "none",
+    "pattern": "[logstash-]YYYY.MM.DD",
+    "default": "kibana-int"
+  },
+  "style": "dark",
+  "failover": false,
+  "loader": {
+    "save_gist": false,
+    "save_elasticsearch": true,
+    "save_local": true,
+    "save_default": true,
+    "save_temp": true,
+    "save_temp_ttl_enable": true,
+    "save_temp_ttl": "30d",
+    "load_gist": true,
+    "load_elasticsearch": true,
+    "load_elasticsearch_size": 20,
+    "load_local": true,
+    "hide": false
+  }
+}
