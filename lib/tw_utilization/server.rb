@@ -75,7 +75,7 @@ module TWUtilization
     extend CasHelpers
 
     use Rack::Session::Cookie, :secret => 'secret'
-    use Rack::Static, :urls => %w(/app /css /font /img /vendor config.js), :root => PUBLIC
+    use Rack::Static, :urls => %w(/app /css /font /img /vendor /config.js), :root => PUBLIC
     use Rack::StreamingProxy do |request|
       path = request.path
       if path.start_with?("/es")
