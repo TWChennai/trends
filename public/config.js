@@ -18,8 +18,7 @@ function (Settings) {
      * elasticsearch host
      * @type {String}
      */
-    //elasticsearch: "http://"+window.location.hostname+":9200",
-    elasticsearch:    window.location.origin+"/es",
+    elasticsearch: "http://"+window.location.hostname+":9200",
 
     /**
      * The default ES index to use for storing Kibana specific object
