@@ -2,7 +2,9 @@
   "title": "TW Utilization",
   "services": {
     "query": {
-      "idQueue": [],
+      "idQueue": [
+        7
+      ],
       "list": {
         "0": {
           "query": "billable_type:\"Billable\"",
@@ -74,7 +76,6 @@
     "filter": {
       "idQueue": [
         1,
-        2,
         3,
         4,
         5,
@@ -86,18 +87,28 @@
       ],
       "list": {
         "0": {
-          "from": "2013-03-19T06:57:51.192Z",
-          "to": "2013-09-15T06:57:51.193Z",
+          "from": "2013-03-27T04:11:12.956Z",
+          "to": "2013-09-23T04:11:12.956Z",
           "field": "WeekEndingTimestamp",
           "type": "time",
           "mandate": "must",
           "active": true,
           "alias": "",
           "id": 0
+        },
+        "2": {
+          "type": "terms",
+          "field": "Subproj",
+          "value": "public_holiday",
+          "mandate": "mustNot",
+          "active": false,
+          "alias": "",
+          "id": 2
         }
       },
       "ids": [
-        0
+        0,
+        2
       ]
     }
   },
@@ -194,7 +205,8 @@
           "chart": "pie",
           "counter_pos": "none",
           "spyable": true,
-          "title": "Overall Utilization"
+          "title": "Overall Utilization",
+          "percentage": true
         },
         {
           "span": 6,
@@ -270,7 +282,8 @@
           "chart": "pie",
           "counter_pos": "none",
           "spyable": true,
-          "title": "Developer Utilization"
+          "title": "Developer Utilization",
+          "percentage": true
         },
         {
           "error": false,
@@ -299,7 +312,8 @@
           "chart": "pie",
           "counter_pos": "none",
           "spyable": false,
-          "title": "QAs Utiliation"
+          "title": "QAs Utiliation",
+          "percentage": true
         },
         {
           "error": false,
@@ -328,7 +342,8 @@
           "chart": "pie",
           "counter_pos": "none",
           "spyable": false,
-          "title": "BAs Utilization"
+          "title": "BAs Utilization",
+          "percentage": true
         },
         {
           "error": false,
@@ -357,7 +372,8 @@
           "chart": "pie",
           "counter_pos": "none",
           "spyable": true,
-          "title": "PMs Utilization"
+          "title": "PMs Utilization",
+          "percentage": true
         }
       ]
     },
@@ -397,7 +413,8 @@
           "chart": "pie",
           "counter_pos": "none",
           "spyable": true,
-          "title": "Project"
+          "title": "Project",
+          "percentage": true
         },
         {
           "error": false,
@@ -428,7 +445,8 @@
           "chart": "pie",
           "counter_pos": "none",
           "spyable": true,
-          "title": "Sub Project"
+          "title": "Sub Project",
+          "percentage": true
         }
       ]
     },
@@ -472,7 +490,8 @@
           "chart": "table",
           "counter_pos": "above",
           "spyable": true,
-          "title": "Week Ending"
+          "title": "Week Ending",
+          "percentage": true
         },
         {
           "error": false,
@@ -516,15 +535,26 @@
               },
               "tilt": false,
               "arrangement": "horizontal",
-              "spyable": true
+              "spyable": true,
+              "percentage": true
             },
             {
               "type": "query",
               "height": "250px",
               "label": "Search",
               "query": "*",
-              "pinned": true,
-              "history": [],
+              "pinned": false,
+              "history": [
+                "Role:\"Project Manager\"",
+                "Role:\"Business Analyst\"",
+                "Role:\"Quality Assurance\"",
+                "Role:\"Developer\"",
+                "* AND billable_type:\"Client NonBillable\"",
+                "* AND billable_type:\"Thoughtworks NonBillable\"",
+                "billable_type:\"Billable\"",
+                "* AND NOT SubProj:\"public_holiday\"",
+                "NOT SubProj:\"public_holiday\""
+              ],
               "remember": 10
             }
           ],
@@ -568,7 +598,8 @@
           "chart": "table",
           "counter_pos": "above",
           "spyable": true,
-          "title": "Role"
+          "title": "Role",
+          "percentage": true
         },
         {
           "error": false,
@@ -603,7 +634,8 @@
           "chart": "table",
           "counter_pos": "above",
           "spyable": true,
-          "title": "Grade"
+          "title": "Grade",
+          "percentage": true
         }
       ]
     },
@@ -647,7 +679,8 @@
           "chart": "table",
           "counter_pos": "above",
           "spyable": true,
-          "title": "People"
+          "title": "People",
+          "percentage": true
         }
       ]
     }
