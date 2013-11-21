@@ -49,7 +49,8 @@ function (Settings) {
       'trends',
       'bettermap',
       'query',
-      'terms'
+      'terms',
+      'sparklines'
     ]
   });
 });
